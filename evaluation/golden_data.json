@@ -1,0 +1,32 @@
+[
+  {
+    "premise": "Aspirin is indicated for the relief of minor aches and pains and to reduce fever.",
+    "tests": [
+      {
+        "hypothesis": "Aspirin can help reduce fever and relieve minor pain.",
+        "label": 0
+      },
+      {
+        "hypothesis": "Aspirin is primarily used to increase body temperature and cause fever.",
+        "label": 1
+      },
+      {
+        "hypothesis": "Aspirin might occasionally be used to treat bacterial infections.",
+        "label": 1
+      }
+    ]
+  },
+  {
+    "premise": "Lisinopril is an ACE inhibitor used to treat high blood pressure and heart failure.",
+    "tests": [
+      {
+        "hypothesis": "Lisinopril is used for managing high blood pressure.",
+        "label": 0
+      },
+      {
+        "hypothesis": "Lisinopril is an antibiotic used to cure viral infections.",
+        "label": 1
+      }
+    ]
+  }
+]

@@ -26,24 +26,13 @@ def evaluate_current_system():
     Evaluates the current configuration against a golden validation set.
     Returns: A float representing accuracy/score (0.0 to 1.0) where 1.0 is perfect classification.
     """
-    # Hardcoded mini validation set for fast autoresearch loop
-    golden_data = [
-        {
-            "premise": "Aspirin is indicated for the relief of minor aches and pains and to reduce fever.",
-            "tests": [
-                {"hypothesis": "Aspirin can help reduce fever and relieve minor pain.", "label": 0}, # True statement
-                {"hypothesis": "Aspirin is primarily used to increase body temperature and cause fever.", "label": 1}, # Contradiction
-                {"hypothesis": "Aspirin might occasionally be used to treat bacterial infections.", "label": 1} # Unsupported/Hallucination
-            ]
-        },
-        {
-            "premise": "Lisinopril is an ACE inhibitor used to treat high blood pressure and heart failure.",
-            "tests": [
-                {"hypothesis": "Lisinopril is used for managing high blood pressure.", "label": 0},
-                {"hypothesis": "Lisinopril is an antibiotic used to cure viral infections.", "label": 1}
-            ]
-        }
-    ]
+    golden_data_path = os.path.join(os.path.dirname(__file__), "golden_data.json")
+    try:
+        with open(golden_data_path, "r", encoding="utf-8") as f:
+            golden_data = json.load(f)
+    except FileNotFoundError:
+        print("Warning: golden_data.json missing. Returning score 0.0")
+        return 0.0
 
     correct_predictions = 0
     total_predictions = 0

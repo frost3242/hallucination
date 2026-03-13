@@ -2,11 +2,18 @@ import json
 import pandas as pd
 import os
 import re
+import spacy
 
 from config.config import SCRAPED_DATA_FILE, DATA_LAKE_PROCESSED
 
-OUTPUT_FILE = os.path.join(DATA_LAKE_PROCESSED, "knowledge_base/data.csv")
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    import subprocess
+    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
+    nlp = spacy.load("en_core_web_sm")
 
+OUTPUT_FILE = os.path.join(DATA_LAKE_PROCESSED, "knowledge_base/data.csv")
 
 def clean_text(text):
 
@@ -16,12 +23,14 @@ def clean_text(text):
     text = re.sub(r"\s+", " ", text)
     return text.strip()
 
-
 def split_sentences(text):
-
-    sentences = re.split(r'[.!?]', text)
-
-    sentences = [s.strip() for s in sentences if len(s.strip()) > 30]
+    """
+    Accurately splits text into sentences using spaCy, avoiding regex pitfalls 
+    with medical abbreviations (e.g. Dr., mg.).
+    """
+    doc = nlp(text)
+    
+    sentences = [sent.text.strip() for sent in doc.sents if len(sent.text.strip()) > 30]
 
     return sentences
 
