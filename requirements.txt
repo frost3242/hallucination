@@ -6,3 +6,4 @@ networkx
 scikit-learn
 sentence-transformers
 openai
+python-dotenv

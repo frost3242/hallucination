@@ -75,7 +75,7 @@ LOGIN_CREDENTIALS = {}
 # -----------------------------
 import os
 from dotenv import load_dotenv
-# This automatically finds your .env file and loads the variables into the system environment
+
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 APIFY_TOKEN = os.getenv("APIFY_TOKEN")
