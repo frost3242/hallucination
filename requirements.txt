@@ -1,0 +1,8 @@
+pandas
+requests
+ddgs
+spacy
+networkx
+scikit-learn
+sentence-transformers
+openai

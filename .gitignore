@@ -1,0 +1,10 @@
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.pyc
+data/
+data_lake/
+.env
+.DS_Store
+*.ipynb
