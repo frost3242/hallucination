@@ -28,7 +28,8 @@ def detect_oci(premise, hypothesis):
         contradiction_prob = score
 
     elif label == "NEUTRAL":
-        contradiction_prob = score * 0.5
+        # Strict Extraction Mode: Unsupported facts are full hallucinations
+        contradiction_prob = 1.0
 
     else:  # ENTAILMENT
         contradiction_prob = 0.0

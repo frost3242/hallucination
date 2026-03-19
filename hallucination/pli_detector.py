@@ -29,7 +29,8 @@ def detect_pli(premise, hypothesis):
         pli_score = score
 
     elif label == "NEUTRAL":
-        pli_score = score * 0.5
+        # Strict Extraction Mode: Unsupported facts are full hallucinations
+        pli_score = 1.0
 
     else:  # ENTAILMENT
         pli_score = 0.0
