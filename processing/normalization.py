@@ -42,6 +42,23 @@ def normalize(json_file=SCRAPED_DATA_FILE):
     with open(json_file, encoding="utf-8") as f:
         data = json.load(f)
 
+    # Automatically map OpenFDA json blocks to standard crawler schema
+    if isinstance(data, dict) and "results" in data:
+        parsed_data = []
+        for result in data["results"]:
+            text_blocks = []
+            for key, val in result.items():
+                if isinstance(val, list) and val and isinstance(val[0], str):
+                    text_blocks.append(val[0])
+            parsed_data.append({
+                "url": "https://api.fda.gov/drug/label",
+                "title": "OpenFDA API Record",
+                "text": " ".join(text_blocks)
+            })
+        data = parsed_data
+    elif isinstance(data, dict):
+        data = [data]
+
     rows = []
 
     for item in data:

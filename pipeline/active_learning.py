@@ -51,23 +51,45 @@ def generate_active_learning_samples(csv_file, samples=1):
             print(f"   Drafting synthetic tests for: {text[:50]}...")
             res = generate(text)
             
-            # Extract JSON from potential markdown blocks
-            match = re.search(r"\{.*\}", res, re.DOTALL)
-            if match:
-                res_dict = json.loads(match.group(0))
+            # With OpenAI json_object forced, res should be valid JSON
+            try:
+                res_dict = json.loads(res)
+            except Exception:
+                # Fallback to regex if still wrapped in markdown or partial JSON
+                match = re.search(r"\{.*\}", res, re.DOTALL)
+                if match:
+                    try:
+                        res_dict = json.loads(match.group(0))
+                    except Exception as parse_err:
+                        raise ValueError(f"Regex extraction failed: {parse_err} | Raw: {res}")
+                else:
+                    raise ValueError(f"No valid JSON structure found in: {res}")
                 
-                new_entry = {
-                    "premise": text,
-                    "tests": [
-                        {"hypothesis": res_dict.get("true_statement", ""), "label": 0},
-                        {"hypothesis": res_dict.get("contradiction_statement", ""), "label": 1},
-                        {"hypothesis": res_dict.get("uncertain_statement", ""), "label": 1}
-                    ]
-                }
-                golden_data.append(new_entry)
-                new_additions += 1
+            # Guarantee structure before dictionary access
+            if not isinstance(res_dict, dict):
+                # Attempt to parse json loaded as string
+                try:
+                    res_dict = json.loads(res_dict)
+                except Exception:
+                    raise ValueError(f"Expected dictionary but got {type(res_dict)}: {res_dict}")
+                    
+            if not isinstance(res_dict, dict):
+                 raise ValueError("Still not a dictionary after double parsing.")
+            
+            new_entry = {
+                "premise": text,
+                "tests": [
+                    {"hypothesis": res_dict.get("true_statement", ""), "label": 0},
+                    {"hypothesis": res_dict.get("contradiction_statement", ""), "label": 1},
+                    {"hypothesis": res_dict.get("uncertain_statement", ""), "label": 1}
+                ]
+            }
+            golden_data.append(new_entry)
+            new_additions += 1
         except Exception as e:
-            print(f"Failed to generate for a sentence: {e}")
+            import traceback
+            print(f"Failed to generate for a sentence:")
+            traceback.print_exc()
             
     if new_additions > 0:
         with open(golden_path, "w", encoding="utf-8") as f:

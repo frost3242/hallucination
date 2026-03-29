@@ -28,5 +28,107 @@
         "label": 1
       }
     ]
+  },
+  {
+    "premise": "Chemical Name: (\u00b1)-9-Fluoro-2,3-dihydro-3-methyl-10-(4-methyl-1-piperazinyl)-7-oxo-7 H -pyrido",
+    "tests": [
+      {
+        "hypothesis": "The chemical name of the drug is (\u00b1)-9-Fluoro-2,3-dihydro-3-methyl-10-(4-methyl-1-piperazinyl)-7-oxo-7 H -pyrido.",
+        "label": 0
+      },
+      {
+        "hypothesis": "The drug is not a pyrido compound.",
+        "label": 1
+      },
+      {
+        "hypothesis": "The drug may have therapeutic applications.",
+        "label": 1
+      }
+    ]
+  },
+  {
+    "premise": "Birth Weight Low Birth Weight see Birth Weight Male Sterilization see Vasectomy Maternal Health see Postpartum Care Medicines and Pregnancy see Pregnancy and Medicines Miscarriage Molar Pregnancy see Tumors and Pregnancy Multiple Births see Twins, Triplets, Multiple Births Nutrition and Pregnancy see Pregnancy and Nutrition Ovarian Insufficiency see Primary Ovarian Insufficiency Paternity Testing see Genetic Testing Postpartum Care Postpartum Depression Preconception Care Preeclampsia see High Blood Pressure in Pregnancy Preemies see Premature Babies Pregnancy Pregnancy and AIDS see HIV and Pregnancy Pregnancy and Diabetes see Diabetes and Pregnancy Pregnancy and Health Problems see Health Problems in Pregnancy Pregnancy and HIV see HIV and Pregnancy Pregnancy and Medicines Pregnancy and Nutrition Pregnancy and Opioids Pregnancy and Substance Abuse see Pregnancy and Substance Use Pregnancy and Substance Use Pregnancy Complications see Health Problems in Pregnancy Pregnancy Hazards see Reproductive Hazards Pregnancy Loss see Miscarriage ; Stillbirth Pregnancy, High-Risk see Health Problems in Pregnancy Pregnancy, Infections in see Infections and Pregnancy Pregnancy, Teen see Teenage Pregnancy Premature Babies Premature Labor see Childbirth Problems Premature Ovarian Failure see Primary Ovarian Insufficiency Prenatal Care Prenatal Testing Primary Ovarian Insufficiency Reproductive Hazards Rh Incompatibility Small for Gestational Age see Birth Weight Smoking in Pregnancy see Pregnancy and Substance Use Spontaneous Abortion see Miscarriage Sterility see Infertility Sterilization see Tubal Ligation ; Vasectomy Stillbirth Substance Abuse in Pregnancy see Pregnancy and Substance Use Teenage Pregnancy Toxemia of Pregnancy see High Blood Pressure in Pregnancy Triplets see Twins, Triplets, Multiple Births Tubal Ligation Tubal Pregnancy see Ectopic Pregnancy Tumors and Pregnancy Twins, Triplets, Multiple Births Vasectomy Was this page helpful?",
+    "tests": [
+      {
+        "hypothesis": "Low birth weight is associated with various health problems in pregnancy.",
+        "label": 0
+      },
+      {
+        "hypothesis": "Low birth weight has no impact on health problems in pregnancy.",
+        "label": 1
+      },
+      {
+        "hypothesis": "The effects of smoking in pregnancy on low birth weight are not clearly defined.",
+        "label": 1
+      }
+    ]
+  },
+  {
+    "premise": "Refer to WARNINGS for additional adverse reactions.",
+    "tests": [
+      {
+        "hypothesis": "The drug may have additional adverse reactions as indicated in the WARNINGS section.",
+        "label": 0
+      },
+      {
+        "hypothesis": "The drug has no adverse reactions listed in the WARNINGS section.",
+        "label": 1
+      },
+      {
+        "hypothesis": "The specific adverse reactions of the drug are not detailed in the context.",
+        "label": 1
+      }
+    ]
+  },
+  {
+    "premise": "anitratus Chlamydia trachomatis Listeria monocytogenes Acinetobacter calcoaceticus var.",
+    "tests": [
+      {
+        "hypothesis": "Anitratus is associated with Chlamydia trachomatis, Listeria monocytogenes, and Acinetobacter calcoaceticus var.",
+        "label": 0
+      },
+      {
+        "hypothesis": "Anitratus is not associated with any bacterial infections.",
+        "label": 1
+      },
+      {
+        "hypothesis": "The specific effects of anitratus on these bacteria are not mentioned.",
+        "label": 1
+      }
+    ]
+  },
+  {
+    "premise": "Available from: https://my.clevelandclinic.org/health/diseases/24231-pneumococcal-disease Dion CF, Ashurst JV.",
+    "tests": [
+      {
+        "hypothesis": "Pneumococcal disease is a serious infection caused by the bacterium Streptococcus pneumoniae.",
+        "label": 0
+      },
+      {
+        "hypothesis": "Pneumococcal disease is caused by a virus, not a bacterium.",
+        "label": 1
+      },
+      {
+        "hypothesis": "The treatment options for pneumococcal disease may vary depending on the severity of the infection.",
+        "label": 1
+      }
+    ]
+  },
+  {
+    "premise": "Each test works in a different way and is done at specific times.",
+    "tests": [
+      {
+        "hypothesis": "Each test is conducted at specific times.",
+        "label": 0
+      },
+      {
+        "hypothesis": "All tests can be performed at any time without restrictions.",
+        "label": 1
+      },
+      {
+        "hypothesis": "The specific ways in which each test works are not detailed.",
+        "label": 1
+      }
+    ]
   }
 ]

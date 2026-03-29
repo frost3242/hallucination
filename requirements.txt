@@ -7,3 +7,4 @@ scikit-learn
 sentence-transformers
 openai
 python-dotenv
+google-cloud-storage

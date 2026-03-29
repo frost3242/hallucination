@@ -58,6 +58,7 @@ START_URLS = [
     "https://medlineplus.gov",
     "https://www.nhs.uk",
     "https://www.mayoclinic.org",
+    "https://www.medscape.com"  # Added protected clinical database for testing
 ]
 
 MAX_DEPTH = 3
@@ -68,7 +69,13 @@ MAX_PAGES = 500
 # LOGIN CONFIGURATION
 # -----------------------------
 
-LOGIN_CREDENTIALS = {}
+LOGIN_CREDENTIALS = {
+    # The crawler will automatically detect this domain and inject these credentials into the DOM
+    "https://www.medscape.com": {
+        "username": "YOUR_MEDSCAPE_EMAIL_HERE",
+        "password": "YOUR_MEDSCAPE_PASSWORD_HERE"
+    }
+}
 
 # -----------------------------
 # API KEYS
@@ -79,3 +86,4 @@ from dotenv import load_dotenv
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 APIFY_TOKEN = os.getenv("APIFY_TOKEN")
+GCP_BUCKET_NAME = os.getenv("GCP_BUCKET_NAME", None)
